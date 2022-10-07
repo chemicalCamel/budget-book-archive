@@ -1,0 +1,180 @@
+[
+    {
+        "name": "Rent",
+        "type": "expense",
+        "amount": 450,
+        "date": "2022-10-01T12:00:00.000Z",
+        "tags": [
+            {
+                "name": "bank1",
+                "type": "account",
+                "auto": true
+            },
+            {
+                "name": "monthly",
+                "type": "frequency",
+                "auto": true
+            }
+        ],
+        "meta": {
+            "addedOn": "2022-10-01T22:24:00.000Z",
+            "addedBy": "user"
+        }
+    },
+    {
+        "name": "Wage",
+        "type": "income",
+        "amount": 2570,
+        "date": "2022-10-01T12:02:00.000Z",
+        "tags": [
+            {
+                "name": "bank1",
+                "type": "account",
+                "auto": true
+            },
+            {
+                "name": "monthly",
+                "type": "frequency",
+                "auto": true
+            }
+        ],
+        "meta": {
+            "addedOn": "2022-10-01T22:25:00.000Z",
+            "addedBy": "user",
+            "lastModifiedOn": "2022-10-01T23:03:00.000Z",
+            "lastModifiedBy": "user"
+        }
+    },
+    {
+        "name": "Groceries",
+        "type": "expense",
+        "amount": 89.2,
+        "date": "2022-10-03T10:38:20.000Z",
+        "tags": [
+            {
+                "name": "groceries",
+                "auto": false
+            }
+        ],
+        "meta": {
+            "addedOn": "2022-10-01T22:29:00.000Z",
+            "addedBy": "user"
+        }
+    },
+    {
+        "name": "Online-Shop: Umbrella",
+        "type": "expense",
+        "amount": 12.99,
+        "date": "2022-10-05T18:07:58.000Z",
+        "notes": ["From Umbrella Corp."],
+        "tags": [
+            {
+                "name": "amazon",
+                "auto": false
+            },
+            {
+                "name": "bank2",
+                "type": "account",
+                "auto": false
+            }
+        ],
+        "meta": {
+            "addedOn": "2022-10-01T21:13:00.000Z",
+            "addedBy": "user",
+            "lastModifiedOn": "2022-10-01T23:08:00.000Z",
+            "lastModifiedBy": "user"
+        }
+    },
+    {
+        "name": "Groceries",
+        "type": "expense",
+        "amount": 56.2,
+        "date": "2022-10-10T13:28:00.000Z",
+        "tags": [
+            {
+                "name": "groceries",
+                "auto": false
+            }
+        ],
+        "meta": {
+            "addedOn": "2022-10-12T12:10:00.000Z",
+            "addedBy": "user"
+        }
+    },
+    {
+        "name": "Restaurant",
+        "type": "expense",
+        "amount": 23,
+        "date": "2022-10-14T19:45:00.000Z",
+        "meta": {
+            "addedOn": "2022-10-20T12:20:00.000Z",
+            "addedBy": "user"
+        }
+    },
+    {
+        "name": "Sell Couch",
+        "type": "income",
+        "amount": 230,
+        "date": "2022-10-15T12:00:00.000Z",
+        "tags": [
+            {
+                "name": "online-auction",
+                "auto": false
+            }
+        ],
+        "meta": {
+            "addedOn": "2022-10-15T12:20:00.000Z",
+            "addedBy": "user"
+        }
+    },
+    {
+        "name": "Groceries",
+        "type": "expense",
+        "amount": 112.6,
+        "date": "2022-10-21T09:11:00.000Z",
+        "notes": ["Baught new iron (60€)"],
+        "tags": [
+            {
+                "name": "groceries",
+                "auto": false
+            }
+        ],
+        "meta": {
+            "addedOn": "2022-10-22T12:00:00.000Z",
+            "addedBy": "user",
+            "lastModifiedOn": "2022-10-22T23:08:00.000Z",
+            "lastModifiedBy": "user"
+        }
+    },
+    {
+        "name": "Online-Shop: Photo Lens",
+        "type": "expense",
+        "amount": 630,
+        "date": "2022-10-24T18:53:00.000Z",
+        "tags": [
+            {
+                "name": "amazon",
+                "auto": false
+            },
+            {
+                "name": "bank2",
+                "type": "account",
+                "auto": false
+            }
+        ],
+        "meta": {
+            "addedOn": "2022-10-24T19:00:00.000Z",
+            "addedBy": "user"
+        }
+    },
+    {
+        "name": "Phone",
+        "type": "expense",
+        "amount": 23,
+        "date": "2022-10-24T20:00:00.000Z",
+        "meta": {
+            "addedOn": "2022-10-25T09:00:00.000Z",
+            "addedBy": "user"
+        }
+    }
+]
