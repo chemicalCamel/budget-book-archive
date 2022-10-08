@@ -1,5 +1,7 @@
 <script lang="ts">
-    import Placeholder from './lib/Placeholder.svelte';
+    import Header from './lib/components/Header.svelte';
 </script>
 
-<Placeholder />
+<Header>
+    <svelte:fragment slot="heading">Overview</svelte:fragment>
+</Header>
