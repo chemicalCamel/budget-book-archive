@@ -2,10 +2,13 @@
     "extends": "@tsconfig/svelte/tsconfig.json",
     "compilerOptions": {
         "target": "ESNext",
-        "useDefineForClassFields": true,
         "module": "ESNext",
         "resolveJsonModule": true,
+        "useDefineForClassFields": true,
         "baseUrl": ".",
+        "paths": {
+            "$components/*": ["src/components/*"]
+        },
         /**
          * Typecheck JS in `.svelte` and `.js` files by default.
          * Disable checkJs if you'd like to use dynamic types in JS.
