@@ -20,7 +20,7 @@
         border-bottom: var(--border-style);
         border-color: var(--primary-600);
 
-        padding: 0.7rem;
+        padding: 0 1rem;
     }
 
     h1 {
