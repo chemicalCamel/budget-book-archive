@@ -6,16 +6,18 @@
     function dateToString(date: Date): string {
         const day = date.getDate().toString().padStart(2, '0');
         const month = (date.getMonth() + 1).toString().padStart(2, '0');
-        return `${day}.${month}`;
+        return `${day}`;
     }
 </script>
 
 <div class="container">
-    <div>
-        {transaction.name}
-    </div>
-    <div class="date">
-        {dateToString(transaction.date)}
+    <div class="left">
+        <div class="date">
+            {dateToString(transaction.date)}
+        </div>
+        <div class="name">
+            {transaction.name}
+        </div>
     </div>
     <div class="amount" style="color: {transaction.type === 'income' ? 'var(--green-400)' : 'var(--red-300)'};">
         {transaction.amount}€
@@ -24,13 +26,14 @@
 
 <style>
     .container {
-        display: grid;
-        grid-template-columns: 1fr 20% 1fr;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
-        padding: 1rem;
+        padding: 0.8rem;
 
         background-color: var(--gray-900);
-        border-bottom: 2px solid var(--gray-800);
+        border-bottom: var(--border-style) var(--gray-700);
 
         transition: border 0.125s;
     }
@@ -39,13 +42,23 @@
         border-color: var(--gray-400);
     }
 
+    .left {
+        display: flex;
+        align-items: center;
+    }
+
+    .date,
+    .name,
+    .amount {
+        padding: 0.2rem 1rem;
+    }
+
     .date {
-        justify-self: center;
+        background-color: var(--primary-800);
+        border-bottom: var(--border-style) var(--primary-600);
     }
 
     .amount {
-        justify-self: end;
-
         font-weight: 700;
     }
 </style>
