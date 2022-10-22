@@ -21,13 +21,31 @@
         transactions = [...transactions];
     });
 
-    function getDatetime(transaction: TransactionType): string {
-        return `${transaction.date.getFullYear()}-${transaction.date.getMonth()}`;
+    function showMonth(current: TransactionType, last?: TransactionType): boolean {
+        // show before first entry
+        if (!last) {
+            return true;
+        }
+
+        // show month on month switch
+        return current.date.getMonth() !== last.date.getMonth();
+    }
+
+    function getMonthAndYear(transaction: TransactionType): string {
+        return `${transaction.date.toLocaleString(undefined, { month: 'long', year: 'numeric' })}`;
     }
 </script>
 
 <div class="container">
-    {#each transactions as transaction}
+    {#each transactions as transaction, i}
+        <!-- sticky month header -->
+        {#if showMonth(transaction, transactions[i - 1])}
+            <div class="month">
+                <div class="month-text">{getMonthAndYear(transaction)}</div>
+            </div>
+        {/if}
+
+        <!-- transaction -->
         <Transaction {transaction} />
     {/each}
 </div>
@@ -39,5 +57,25 @@
         gap: 0.5rem;
 
         width: 60%;
+    }
+
+    .month {
+        position: sticky;
+        top: 0;
+
+        padding: 0.5rem 0.8rem;
+
+        background-color: var(--primary-800);
+        border-bottom: 4px solid var(--bg);
+        border-top: 4px solid var(--bg);
+    }
+
+    .month-text {
+        padding: 0.2rem 0;
+
+        border-bottom: var(--border-style) var(--primary-600);
+
+        text-align: center;
+        font-weight: 700;
     }
 </style>
