@@ -77,5 +77,7 @@
 
         text-align: center;
         font-weight: 700;
+
+        z-index: 1;
     }
 </style>

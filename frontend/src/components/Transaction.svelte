@@ -1,31 +1,42 @@
 <script lang="ts">
+    import { slide } from 'svelte/transition';
+
     import type { Transaction } from '$schemas/transaction.schema';
+    import TransactionDetails from './TransactionDetails.svelte';
 
     export let transaction: Transaction;
 
+    let detailsOpen = false;
+
     function dateToString(date: Date): string {
-        const day = date.getDate().toString().padStart(2, '0');
-        const month = (date.getMonth() + 1).toString().padStart(2, '0');
-        return `${day}`;
+        return `${date.getDate().toString().padStart(2, '0')}`;
     }
 </script>
 
-<div class="container">
-    <div class="left">
-        <div class="date">
-            {dateToString(transaction.date)}
+<div class="transaction">
+    <div class="header" on:click={() => (detailsOpen = !detailsOpen)}>
+        <div class="left">
+            <div class="date">
+                {dateToString(transaction.date)}
+            </div>
+            <div class="name">
+                {transaction.name}
+            </div>
         </div>
-        <div class="name">
-            {transaction.name}
+        <div class="amount" style="color: {transaction.type === 'income' ? 'var(--green-400)' : 'var(--red-300)'};">
+            {transaction.amount}€
         </div>
     </div>
-    <div class="amount" style="color: {transaction.type === 'income' ? 'var(--green-400)' : 'var(--red-300)'};">
-        {transaction.amount}€
-    </div>
+
+    {#if detailsOpen}
+        <div class="details" transition:slide|local>
+            <TransactionDetails {transaction} />
+        </div>
+    {/if}
 </div>
 
 <style>
-    .container {
+    .header {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -38,7 +49,7 @@
         transition: border 0.125s;
     }
 
-    .container:hover {
+    .transaction:hover .header {
         border-color: var(--gray-400);
     }
 
