@@ -27,7 +27,7 @@
             return true;
         }
 
-        // show month on month switch
+        // show on month switch
         return current.date.getMonth() !== last.date.getMonth();
     }
 
@@ -36,7 +36,7 @@
     }
 </script>
 
-<div class="container">
+<div class="transaction-list">
     {#each transactions as transaction, i}
         <!-- sticky month header -->
         {#if showMonth(transaction, transactions[i - 1])}
@@ -45,18 +45,17 @@
             </div>
         {/if}
 
-        <!-- transaction -->
         <Transaction {transaction} />
     {/each}
 </div>
 
 <style>
-    .container {
+    .transaction-list {
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
 
-        width: 60%;
+        width: 100%;
     }
 
     .month {
@@ -79,5 +78,17 @@
         font-weight: 700;
 
         z-index: 1;
+    }
+
+    @media (min-width: 768px) {
+        .transaction-list {
+            width: 60%;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .transaction-list {
+            width: 50%;
+        }
     }
 </style>
