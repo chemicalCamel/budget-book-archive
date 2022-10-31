@@ -43,7 +43,7 @@
 
         padding: 0.8rem;
 
-        background-color: var(--gray-900);
+        background-color: var(--gray-800);
         border-bottom: var(--border-style) var(--gray-700);
 
         transition: border 0.125s;

@@ -36,7 +36,7 @@
     }
 </script>
 
-<div class="transaction-list">
+<div>
     {#each transactions as transaction, i}
         <!-- sticky month header -->
         {#if showMonth(transaction, transactions[i - 1])}
@@ -50,14 +50,6 @@
 </div>
 
 <style>
-    .transaction-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-
-        width: 100%;
-    }
-
     .month {
         position: sticky;
         top: 0;
@@ -65,8 +57,6 @@
         padding: 0.5rem 0.8rem;
 
         background-color: var(--primary-800);
-        border-bottom: 4px solid var(--bg);
-        border-top: 4px solid var(--bg);
     }
 
     .month-text {
@@ -78,17 +68,5 @@
         font-weight: 700;
 
         z-index: 1;
-    }
-
-    @media (min-width: 768px) {
-        .transaction-list {
-            width: 60%;
-        }
-    }
-
-    @media (min-width: 1024px) {
-        .transaction-list {
-            width: 50%;
-        }
     }
 </style>
