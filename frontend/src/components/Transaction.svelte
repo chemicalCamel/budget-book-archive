@@ -2,7 +2,7 @@
     import { slide } from 'svelte/transition';
 
     import type { Transaction } from '$schemas/transaction.schema';
-    import TransactionDetails from './TransactionDetails.svelte';
+    import TransactionDetails from '$components/TransactionDetails.svelte';
 
     export let transaction: Transaction;
 
@@ -43,7 +43,7 @@
 
         padding: 0.8rem;
 
-        background-color: var(--gray-800);
+        background-color: var(--gray-900);
         border-bottom: var(--border-style) var(--gray-700);
 
         transition: border 0.125s;

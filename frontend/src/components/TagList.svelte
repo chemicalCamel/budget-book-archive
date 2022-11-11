@@ -14,6 +14,6 @@
 <style>
     .tag-list {
         display: flex;
-        gap: 1rem;
+        gap: 0.5rem;
     }
 </style>

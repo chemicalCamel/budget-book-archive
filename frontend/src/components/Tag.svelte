@@ -16,14 +16,16 @@
 <style>
     .tag {
         position: relative;
-        padding: 0.2rem 0.5rem;
+        padding: 0.4rem 0.5rem;
 
-        border-bottom: 2px solid var(--secondary-400);
+        background-color: var(--gray-300);
+        color: black;
 
+        border-radius: 0.5rem;
         transition: all 0.125s;
     }
 
     .tag:hover {
-        border-color: var(--secondary-600);
+        background-color: var(--secondary-300);
     }
 </style>

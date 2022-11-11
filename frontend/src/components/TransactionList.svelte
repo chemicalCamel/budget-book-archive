@@ -57,16 +57,15 @@
         padding: 0.5rem 0.8rem;
 
         background-color: var(--primary-800);
+        border-bottom: var(--border-style) var(--primary-600);
+
+        z-index: 1;
     }
 
     .month-text {
         padding: 0.2rem 0;
 
-        border-bottom: var(--border-style) var(--primary-600);
-
         text-align: center;
         font-weight: 700;
-
-        z-index: 1;
     }
 </style>
