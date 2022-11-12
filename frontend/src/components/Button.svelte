@@ -5,12 +5,16 @@
 </script>
 
 <!-- TODO add tooltip with disabled reason -->
-<button type="button" class={theme} class:active {disabled} on:click>
+<button type="button" class:active {disabled} style="--theme: var(--{theme}-300); --shade: var(--{theme}-600)" on:click>
     <slot>No Button Text</slot>
 </button>
 
 <style>
     button {
+        position: relative;
+
+        min-width: 100px;
+
         background: none;
         border: none;
 
@@ -21,8 +25,10 @@
         font-weight: 700;
     }
 
-    button:hover {
+    button:where(:hover, :focus) {
+        outline: none;
         cursor: pointer;
+        color: var(--theme);
     }
 
     button:disabled {
@@ -30,27 +36,22 @@
         color: var(--disabled);
     }
 
-    button:focus {
-        outline: none;
+    button:active {
+        color: var(--shade);
     }
 
-    .primary:hover:not(:disabled),
-    .primary:focus:not(:disabled),
-    .primary.active:not(:disabled) {
-        color: var(--primary-300);
-    }
+    button.active::after {
+        content: '';
 
-    .primary:active:not(:disabled) {
-        color: var(--primary-600);
-    }
+        width: 80%;
+        height: 2px;
 
-    .secondary:hover:not(:disabled),
-    .secondary:focus:not(:disabled),
-    .secondary.active:not(:disabled) {
-        color: var(--secondary-300);
-    }
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
 
-    .secondary:active:not(:disabled) {
-        color: var(--secondary-600);
+        bottom: 4px;
+        background-color: var(--theme);
+        border-radius: 1rem;
     }
 </style>
