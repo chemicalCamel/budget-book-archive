@@ -9,13 +9,14 @@
     let filterOpen = false;
     let isLargeScreen = largeScreenMediaQuery.matches;
 
+    // TODO make global store screen size media query
     largeScreenMediaQuery.addEventListener('change', ($) => {
         isLargeScreen = $.matches;
     });
 </script>
 
 <main>
-    <div class="navigation-container">Placeholder</div>
+    <div class="navigation-container" />
     <div class="transcation-list-container">
         <TransactionList />
     </div>
@@ -30,7 +31,7 @@
     {#if !isLargeScreen}
         <div class="toggle-filter">
             <button on:click={() => (filterOpen = !filterOpen)}>
-                <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <svg style="width:20px;height:20px" viewBox="0 0 24 24">
                     {#if filterOpen}
                         <path
                             fill="currentColor"
@@ -52,6 +53,8 @@
 
         width: 0;
         overflow-x: hidden;
+
+        background-color: var(--gray-900);
     }
 
     .toolbar-container {
@@ -60,6 +63,8 @@
         bottom: 0;
 
         width: 100%;
+
+        z-index: 1;
     }
 
     footer {
@@ -68,6 +73,8 @@
         bottom: 0;
 
         width: 100%;
+
+        z-index: 1;
     }
 
     .toggle-filter {
@@ -101,12 +108,18 @@
 
         .transcation-list-container {
             flex-grow: 1;
+
+            box-shadow: 0 0 20px var(--bg);
+            z-index: 1;
         }
 
         .toolbar-container,
         .navigation-container {
             position: static;
             width: 25%;
+            max-width: 400px;
+
+            z-index: 0;
         }
     }
 </style>
