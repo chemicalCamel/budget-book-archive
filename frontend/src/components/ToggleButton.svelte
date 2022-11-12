@@ -1,56 +1,73 @@
 <script lang="ts">
+    // TODO warning / error on options with the same value
+
     import { createEventDispatcher, onMount } from 'svelte';
 
     import type { Option } from 'src/types';
     import Button from './Button.svelte';
 
     export let options: Array<Option>;
-    export let active: Option | undefined = undefined;
+    /**
+     * Initially active
+     */
+    export let active: Option | Array<Option> | undefined = undefined;
+    export let multi = false;
     export let theme: 'primary' | 'secondary' = 'primary';
 
-    const dispatch = createEventDispatcher<{ select: Option }>();
+    const dispatch = createEventDispatcher<{ select: Option | Array<Option> }>();
 
     onMount(() => {
-        if (active && !options.some(($) => $.value === active?.value)) {
-            // TODO use custom error service
-            throw new Error('Active option not in available options.');
+        if (!active) {
+            return;
         }
+
+        if (active instanceof Array) {
+            active.forEach((activeOption) => {
+                options.filter(($) => $.value === activeOption.value).map(($) => ($.active = true));
+                options = options;
+            });
+        } else {
+            // unneccessary assignment because of weird typescript behavior
+            const activeOption = active;
+            options.filter(($) => $.value === activeOption.value).map(($) => ($.active = true));
+        }
+
+        options = options;
     });
 
-    function activate(option: Option) {
-        active = option;
+    function toggle(option: Option) {
+        if (!multi) {
+            options.forEach(($) => ($.active = false));
+        }
 
-        dispatch('select', option);
+        option.active = !option.active;
+        options = options;
+
+        dispatch('select', multi ? options.filter(($) => $.active) : options.find(($) => $.active));
     }
 </script>
 
 <div class="toggle-buttons">
-    {#each options as option, i}
-        <Button {theme} active={option.value === active?.value} on:click={() => activate(option)}>
+    {#each options as option}
+        <Button {theme} active={option.active} on:click={() => toggle(option)}>
             {option.name}
         </Button>
-        {#if i < options.length - 1}
-            <div class="devider" />
-        {/if}
     {/each}
 </div>
 
 <style>
     .toggle-buttons {
-        --border-color: var(--gray-700);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        gap: 0.5rem 0;
 
         font-size: 0.8rem;
-        padding: 0.3rem 0.7rem;
-        border: var(--border-style) var(--border-color);
-        border-radius: 0.5rem;
-        display: flex;
-        gap: 0.7rem;
-    }
+        width: 100%;
 
-    .devider {
-        width: 2px;
-        display: inline-block;
-        background-color: var(--border-color);
-        border-radius: 1rem;
+        padding: 0.3rem 0.7rem;
+
+        border: var(--border-style) var(--gray-700);
+        border-radius: 0.5rem;
     }
 </style>
