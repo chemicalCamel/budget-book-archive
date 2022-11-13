@@ -123,4 +123,10 @@
     .options {
         display: flex;
     }
+
+    @media (min-width: 1024px) {
+        .toolbar {
+            padding-bottom: 0;
+        }
+    }
 </style>
