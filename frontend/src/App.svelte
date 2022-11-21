@@ -3,11 +3,16 @@
 
     import TransactionList from '$components/TransactionList.svelte';
     import Toolbar from '$components/Toolbar.svelte';
+    import LogModal from '$components/LogModal.svelte';
+
+    import { logState } from '$stores/log';
 
     const largeScreenMediaQuery = window.matchMedia('(min-width: 1024px)');
 
     let filterOpen = false;
     let isLargeScreen = largeScreenMediaQuery.matches;
+
+    let logOpen = false;
 
     // TODO make global store screen size media query
     largeScreenMediaQuery.addEventListener('change', ($) => {
@@ -24,6 +29,10 @@
         <div class="toolbar-container" transition:slide>
             <Toolbar />
         </div>
+    {/if}
+
+    {#if $logState}
+        <LogModal />
     {/if}
 </main>
 
@@ -43,6 +52,7 @@
             </button>
         </div>
     {/if}
+    <button class="info" on:click={() => logState.toggle()}>Log</button>
 </footer>
 
 <style>
@@ -99,6 +109,23 @@
 
     .toggle-filter button:hover {
         border-color: var(--secondary-600);
+    }
+
+    button.info {
+        position: relative;
+
+        left: 1rem;
+        bottom: 1rem;
+
+        aspect-ratio: 1/1;
+
+        background-color: var(--gray-900);
+        border: var(--border-style) var(--secondary-400);
+        border-radius: 6px;
+
+        padding: 0.5rem;
+
+        cursor: pointer;
     }
 
     @media (min-width: 1024px) {

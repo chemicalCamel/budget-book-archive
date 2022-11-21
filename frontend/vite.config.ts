@@ -9,6 +9,7 @@ export default defineConfig({
         alias: {
             $components: path.resolve('src/components'),
             $schemas: path.resolve('src/schemas'),
+            $stores: path.resolve('src/stores'),
         },
     },
 });

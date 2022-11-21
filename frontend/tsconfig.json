@@ -8,7 +8,8 @@
         "baseUrl": ".",
         "paths": {
             "$components/*": ["src/components/*"],
-            "$schemas/*": ["src/schemas/*"]
+            "$schemas/*": ["src/schemas/*"],
+            "$stores/*": ["src/stores/*"]
         },
         /**
          * Typecheck JS in `.svelte` and `.js` files by default.
