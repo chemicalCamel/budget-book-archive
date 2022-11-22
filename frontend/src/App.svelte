@@ -6,18 +6,9 @@
     import LogModal from '$components/LogModal.svelte';
 
     import { logState } from '$stores/log';
-
-    const largeScreenMediaQuery = window.matchMedia('(min-width: 1024px)');
+    import { isLargeScreen } from '$stores/screen';
 
     let filterOpen = false;
-    let isLargeScreen = largeScreenMediaQuery.matches;
-
-    let logOpen = false;
-
-    // TODO make global store screen size media query
-    largeScreenMediaQuery.addEventListener('change', ($) => {
-        isLargeScreen = $.matches;
-    });
 </script>
 
 <main>
@@ -25,7 +16,7 @@
     <div class="transcation-list-container">
         <TransactionList />
     </div>
-    {#if isLargeScreen || filterOpen}
+    {#if $isLargeScreen || filterOpen}
         <div class="toolbar-container" transition:slide>
             <Toolbar />
         </div>
@@ -37,7 +28,7 @@
 </main>
 
 <footer>
-    {#if !isLargeScreen}
+    {#if !$isLargeScreen}
         <div class="toggle-filter">
             <button on:click={() => (filterOpen = !filterOpen)}>
                 <svg style="width:20px;height:20px" viewBox="0 0 24 24">
