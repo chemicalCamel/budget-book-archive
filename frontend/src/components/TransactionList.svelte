@@ -58,8 +58,6 @@
 
         background-color: var(--primary-800);
         border-bottom: var(--border-style) var(--primary-600);
-
-        z-index: 1;
     }
 
     .month-text {

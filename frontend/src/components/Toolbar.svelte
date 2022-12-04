@@ -101,7 +101,7 @@
 
         background-color: var(--gray-900);
 
-        padding-bottom: 3rem;
+        padding-bottom: 3.5rem;
     }
 
     .toolbar > div {

@@ -15,7 +15,6 @@
 
 <style>
     .tag {
-        position: relative;
         padding: 0.4rem 0.5rem;
 
         background-color: var(--gray-300);
