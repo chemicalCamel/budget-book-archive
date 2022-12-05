@@ -28,7 +28,7 @@
 
 <style>
     .transaction-details {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
 
         display: grid;
         grid-template-columns: auto 1fr;

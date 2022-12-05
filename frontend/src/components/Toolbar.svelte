@@ -94,6 +94,7 @@
 <style>
     h2 {
         margin-bottom: 1rem;
+        font-size: 1.5rem;
     }
 
     .toolbar {
