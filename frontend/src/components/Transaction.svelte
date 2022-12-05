@@ -67,6 +67,8 @@
     .date {
         background-color: var(--primary-800);
         border-bottom: var(--border-style) var(--primary-600);
+        border-top-left-radius: 0.2rem;
+        border-top-right-radius: 0.2rem;
     }
 
     .amount {
