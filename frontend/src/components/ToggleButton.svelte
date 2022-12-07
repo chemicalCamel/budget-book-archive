@@ -57,10 +57,11 @@
 
 <style>
     .toggle-buttons {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(var(--columns), 1fr);
         flex-wrap: wrap;
         justify-content: space-evenly;
-        gap: 0.5rem 0;
+        gap: 0.5rem;
 
         font-size: 0.8rem;
         width: 100%;

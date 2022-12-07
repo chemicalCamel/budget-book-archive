@@ -123,11 +123,35 @@
 
     .options {
         display: flex;
+
+        --columns: 2;
+    }
+
+    @media (min-width: 720px) {
+        .options {
+            --columns: 3;
+        }
     }
 
     @media (min-width: 1024px) {
         .toolbar {
             padding-bottom: 0;
+        }
+
+        .options {
+            --columns: 1;
+        }
+    }
+
+    @media (min-width: 1440px) {
+        .options {
+            --columns: 2;
+        }
+    }
+
+    @media (min-width: 1920px) {
+        .options {
+            --columns: 3;
         }
     }
 </style>
