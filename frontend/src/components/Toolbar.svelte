@@ -1,7 +1,11 @@
 <script lang="ts">
     import ToggleButton from '$components/ToggleButton.svelte';
+    import Input from '$components/Input.svelte';
+    import Button from '$components/Button.svelte';
+    import TagList from '$components/TagList.svelte';
 
     import type { Option } from 'src/types';
+    import type { Tag as TagType } from '$schemas/transaction.schema';
 
     const typeOptions: Array<Option> = [
         {
@@ -33,30 +37,21 @@
         },
     ];
 
-    const tagOptions: Array<Option> = [
-        {
-            name: 'Account: Bank 1',
-            value: 'account:bank1',
-        },
-        {
-            name: 'Account: Bank 2',
-            value: 'account:bank2',
-        },
-        {
-            name: 'Groceries',
-            value: 'groceries',
-        },
-        {
-            name: 'Amazon',
-            value: 'amazon',
-        },
-        {
-            name: 'Online-Auction',
-            value: 'online-auction',
-        },
-    ];
+    let tagInput: string;
+    let selectedTags: Array<TagType> = [];
 
-    const test = 'abc' === 'abc';
+    function handleTagInputChange(event: Event) {
+        if (!(event.target instanceof HTMLInputElement)) {
+            return;
+        }
+
+        tagInput = event.target.value;
+    }
+
+    function addTag() {
+        selectedTags.push({ name: tagInput });
+        selectedTags = selectedTags;
+    }
 
     const onSelect = (abc: CustomEvent<Option | Array<Option>>) => console.log('select: ', abc.detail);
 </script>
@@ -78,14 +73,17 @@
             </div>
         </div>
         <div class="filter tag">
-            <div class="title">Tag</div>
+            <div class="title">Tags</div>
             <div class="options">
-                <ToggleButton
-                    on:select={onSelect}
-                    options={tagOptions}
-                    active={[tagOptions[0], tagOptions[2]]}
-                    theme="secondary"
-                    multi={true} />
+                <div class="tags">
+                    <TagList tags={selectedTags} removeable={true} />
+                </div>
+                <div class="tag-input-group">
+                    <Input key="tag-selection" on:change={handleTagInputChange}>
+                        <svelte:fragment slot="label">Tag Input</svelte:fragment>
+                    </Input>
+                    <Button on:click={() => addTag()}>Add</Button>
+                </div>
             </div>
         </div>
     </div>
@@ -121,8 +119,18 @@
         margin-bottom: 0.5rem;
     }
 
+    .tag-input-group {
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+    }
+
     .options {
         display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        font-size: 0.8rem;
 
         --columns: 2;
     }

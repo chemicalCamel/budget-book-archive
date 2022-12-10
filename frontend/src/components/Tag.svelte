@@ -2,6 +2,7 @@
     import type { Tag } from '$schemas/transaction.schema';
 
     export let tag: Tag;
+    export let removeable = false;
 </script>
 
 <div class="tag">
@@ -11,6 +12,9 @@
     <span>
         {tag.name}
     </span>
+    {#if removeable}
+        <!-- TODO remove button -->
+    {/if}
 </div>
 
 <style>
