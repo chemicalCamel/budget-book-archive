@@ -22,7 +22,7 @@
 
     {#if transaction.tags}
         <div>Tags</div>
-        <TagList tags={transaction.tags} />
+        <TagList tags={transaction.tags} theme="secondary" />
     {/if}
 </div>
 

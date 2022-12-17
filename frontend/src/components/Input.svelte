@@ -1,7 +1,9 @@
 <script lang="ts">
+    import type { Theme } from 'src/types';
+
     export let type = 'text';
     export let key: string;
-    export let theme: 'primary' | 'secondary' = 'primary';
+    export let theme: Theme = 'primary';
 </script>
 
 <div class="input-group" style="--theme: var(--{theme}-300">

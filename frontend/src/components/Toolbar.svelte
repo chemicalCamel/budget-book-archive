@@ -3,6 +3,7 @@
     import Input from '$components/Input.svelte';
     import Button from '$components/Button.svelte';
     import TagList from '$components/TagList.svelte';
+    import IconButton from '$components/IconButton.svelte';
 
     import type { Option } from 'src/types';
     import type { Tag as TagType } from '$schemas/transaction.schema';
@@ -76,13 +77,14 @@
             <div class="title">Tags</div>
             <div class="options">
                 <div class="tags">
-                    <TagList tags={selectedTags} removeable={true} />
+                    <TagList tags={selectedTags} removeable={true} theme="secondary" />
                 </div>
                 <div class="tag-input-group">
                     <Input key="tag-selection" on:change={handleTagInputChange}>
                         <svelte:fragment slot="label">Tag Input</svelte:fragment>
                     </Input>
                     <Button on:click={() => addTag()}>Add</Button>
+                    <Button icon="close" />
                 </div>
             </div>
         </div>

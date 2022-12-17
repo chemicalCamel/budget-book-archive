@@ -1,12 +1,13 @@
 <script lang="ts">
-    type Icon = 'menu' | 'close';
+    import type { Icon } from 'src/types';
 
     export let icon: Icon;
+    export let size = '24px';
 </script>
 
 <!-- Icons from https://css.gg/app -->
 
-<svg style="width:24px;height:24px" viewBox="0 0 24 24">
+<svg viewBox="0 0 24 24" style="--icon-size: {size}">
     {#if icon === 'menu'}
         <path
             d="M2 6C2 5.44772 2.44772 5 3 5H21C21.5523 5 22 5.44772 22 6C22 6.55228 21.5523 7 21 7H3C2.44772 7 2 6.55228 2 6Z"
@@ -23,3 +24,10 @@
             fill="currentColor" />
     {/if}
 </svg>
+
+<style>
+    svg {
+        width: 1em;
+        aspect-ratio: 1;
+    }
+</style>
